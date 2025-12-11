@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +10,11 @@ import java.time.LocalDate;
 @Setter
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
@@ -29,5 +30,16 @@ public class User {
         this.email = email;
         this.birth = birth;
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birth=" + birth +
+                ", age=" + age +
+                '}';
     }
 }
