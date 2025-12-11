@@ -2,11 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.repository.User;
 import com.example.demo.repository.UserRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,7 +16,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> helloWorld() {
+    public List<User> findAll(User user) {
+        userRepository.findByEmail(user.getEmail());
         return userRepository.findAll();
+    }
+
+    public User create(User user) {
+
+        return userRepository.save(user);
     }
 }
