@@ -1,15 +1,14 @@
 package com.example.demo.repository;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
 @Getter @Setter
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "users")
 @AllArgsConstructor
 @ToString
@@ -17,11 +16,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    private LocalDate birth;
-    private Integer age;
+    Long id;
+    String name;
+    String email;
+    LocalDate birth;
+    Integer age;
 
 
     public User() {
